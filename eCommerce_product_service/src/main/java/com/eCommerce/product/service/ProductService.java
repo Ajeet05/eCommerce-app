@@ -1,5 +1,6 @@
 package com.eCommerce.product.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.eCommerce.product.entity.ProductAddUpdate;
@@ -11,7 +12,7 @@ public interface ProductService {
 
 	 ProductEntity fetchProduct();
 	 
-	 ProductAddUpdate addProducts();
+	 Serializable addProducts(ProductEntity productEntity) throws Exception;
 	 
 	 ProductAddUpdate updateProducts();
 }
