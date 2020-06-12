@@ -1,5 +1,5 @@
 
-package com.eCommerce.product.config;
+package com.eCommerce.gateway.config;
 
 import static springfox.documentation.schema.AlternateTypeRules.newRule;
 import java.util.Collections;
@@ -37,7 +37,7 @@ public class SwaggerConfig {
     @Bean
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2).select()
-                .apis(RequestHandlerSelectors.basePackage("com.eCommerce.product"))
+                .apis(RequestHandlerSelectors.basePackage("com.eCommerce.cart"))
                 .build()
                 .pathMapping("/")
                 .genericModelSubstitutes(ResponseEntity.class, CompletableFuture.class)
@@ -50,11 +50,11 @@ public class SwaggerConfig {
     }
     
     private ApiInfo getApiInformation(){
-        return new ApiInfo("product service Rest API",
-                "This is a product service Rest API created using Spring Boot",
+        return new ApiInfo("employee service Rest API",
+                "This is a employee service Rest API created using Spring Boot",
                 "1.0",
                 "API Terms of Service URL",
-                new Contact("abcd", "", "monika.prasad@atcs.com"),
+                new Contact("abcd", "", "ajit.kumar@atcs.com"),
                 "API License",
                 "API License URL",
                 Collections.emptyList()

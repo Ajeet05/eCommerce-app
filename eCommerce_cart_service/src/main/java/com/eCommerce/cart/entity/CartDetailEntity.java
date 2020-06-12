@@ -1,41 +1,27 @@
-package com.eCommerce.product.entity;
+package com.eCommerce.cart.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * @author Monika Prasad
- * @implNote Entity Class responsible to map DB result set of product mgmt 
- */
 @Getter
 @Setter
 @Entity
-@Table(name = "productmgmt")
-public class ProductEntity implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class CartDetailEntity implements Serializable{
 
-	/**
-	 * variable of unique id, That is unique value.
-	 */
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int uniqueid;
+	private Integer id;
+	
+	
+	@Column(name = "prod_id")
+	private Integer prod_id;
 	
 	/**
 	 * variable of prodName
@@ -61,5 +47,21 @@ public class ProductEntity implements Serializable {
 	@Column(name = "product_currency")
 	private String currency;
 	
-
+	/**
+	 * variable of Total_price
+	 */
+	@Column(name = "Total_price")
+	private String Total_price;
+	
+	/**
+	 * variable of total_cart_count
+	 */
+	@Column(name = "total_cart_count")
+	private String total_cart_count;
+	
+	/**
+	 * variable of total_cart_count
+	 */
+	@Column(name = "cart_status")
+	private Integer cart_status;
 }

@@ -1,12 +1,20 @@
 package com.eCommerce.cart.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.eCommerce.cart.entity.CartAddUpdate;
+import com.eCommerce.cart.entity.CartDetailEntity;
+import com.eCommerce.cart.entity.CartEntity;
 import com.eCommerce.cart.service.CartService;
 
 @RestController
@@ -16,26 +24,20 @@ public class CartController {
 	@Autowired
 	CartService cartService;
 
-	@GetMapping("/api/cart")
-	public String getName() {
-		return "cart1 & cart2";
-	}
 
 	@GetMapping("/fetch/cart")
-	public String fetchCart() {
-		cartService.fetchCart();
-		return "MB_select";
+	public @ResponseBody List<CartDetailEntity> fetchCart() {
+		return cartService.fetchCart();
 	}
 	
 	@PostMapping("/create/cart")
-	public String createCart() {
-		cartService.createCart();
-		return "MB_select";
+	public CartAddUpdate createCart(@RequestBody CartEntity data) throws Exception {
+		return	cartService.createCart(data);
 	}
 	
-	@PutMapping("/update/cart")
-	public String updateCartt() {
-		cartService.updateCart();
-		return "MB_select";
+	@PutMapping("/remove/cart")
+	public CartAddUpdate removeCart(@RequestParam int uniqueid) throws Exception {
+		CartAddUpdate removeCart = cartService.removeCart(uniqueid);
+		return removeCart;
 	}
 }
